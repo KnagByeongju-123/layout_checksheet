@@ -308,11 +308,11 @@ function openNgHist(zid,eq){
   else{c.innerHTML='';items.forEach(([rid,r])=>{
     const d=document.createElement('div');d.className='ng-hist-item';
     let ph='';if(r.photo)ph+=`<img src="${r.photo}" onclick="viewPhoto(this.src)">`;if(r.improvePhoto)ph+=`<img src="${r.improvePhoto}" onclick="viewPhoto(this.src)" style="border-color:var(--ok)">`;
-    d.innerHTML=`<div class="nhi-top"><span class="nhi-items">${r.itemName}</span><span class="nhi-at">${r.createdAt}</span></div>${r.reason?'<div class="nhi-reason">사유: '+r.reason+'</div>':''}${ph?'<div class="nhi-photos">'+ph+'</div>':''}<span class="nhi-status ${r.status==='open'?'open':'closed'}">${r.status==='open'?'미개선':'개선완료'}</span>${r.improveAt?'<span style="font-size:10px;color:#888;margin-left:6px">'+r.improveAt+'</span>':''}${r.status==='open'?`<button class="improve-btn" onclick="capImprove('${rid}')">📷 개선사진</button>`:''}`;
+    d.innerHTML=`<div class="nhi-top"><span class="nhi-items">${r.itemName}</span><span class="nhi-at">${r.createdAt}</span></div>${r.reason?'<div class="nhi-reason">사유: '+r.reason+'</div>':''}${ph?'<div class="nhi-photos">'+ph+'</div>':''}<span class="nhi-status ${r.status==='open'?'open':'closed'}">${r.status==='open'?'미개선':'개선완료'}</span>${r.improveAt?'<span style="font-size:10px;color:#888;margin-left:6px">'+r.improveAt+'</span>':''}${r.improveDesc?'<div style="font-size:11px;color:var(--ok);margin-top:4px;font-weight:500">개선: '+r.improveDesc+'</div>':''}${r.status==='open'?`<button class="improve-btn" onclick="capImprove('${rid}')">📷 개선사진</button>`:''}`;
     c.appendChild(d)})}
   document.getElementById('ngMo').classList.add('show');
 }
-async function capImprove(rid){const d=await takePhoto();if(!d)return;const now=new Date();ngReports[rid].improvePhoto=d;ngReports[rid].improveAt=document.getElementById('chkDate').value+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');ngReports[rid].status='closed';persistNg();const r=ngReports[rid],[zid,no]=r.key.split(/-(.+)/),z=ZONES.find(x=>x.id===zid),eq=z?z.equip.find(e=>e.no===no):null;if(eq)openNgHist(zid,eq)}
+async function capImprove(rid){const d=await takePhoto();if(!d)return;const desc=prompt('개선내용을 입력하세요:','');if(desc===null)return;const now=new Date();ngReports[rid].improvePhoto=d;ngReports[rid].improveDesc=desc||'';ngReports[rid].improveAt=document.getElementById('chkDate').value+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');ngReports[rid].status='closed';persistNg();const r=ngReports[rid],[zid,no]=r.key.split(/-(.+)/),z=ZONES.find(x=>x.id===zid),eq=z?z.equip.find(e=>e.no===no):null;if(eq)openNgHist(zid,eq)}
 function closeNgMo(){document.getElementById('ngMo').classList.remove('show')}
 document.getElementById('ngMo').addEventListener('click',function(e){if(e.target===this)closeNgMo()});
 
@@ -414,10 +414,10 @@ function downloadXlsx(){
   XLSX.utils.book_append_sheet(wb,ws4,'NG미개선');
   // ===== NG레포트(개선완료) 시트 =====
   const ngClosed=Object.values(ngReports).filter(r=>r.status==='closed').sort((a,b)=>a.createdAt.localeCompare(b.createdAt));
-  const ncHd=['No','발생일시','구역','설비','점검항목','NG사유','발생점검자','개선일시','상태'];
-  const ncRows=ngClosed.map((r,i)=>{const z=ZONES.find(x=>x.id===r.zone);return[i+1,r.createdAt,z?z.name:r.zone,r.no,r.itemName,r.reason,r.insp,r.improveAt||'','개선완료']});
+  const ncHd=['No','발생일시','구역','설비','점검항목','NG사유','발생점검자','개선일시','개선내용','상태'];
+  const ncRows=ngClosed.map((r,i)=>{const z=ZONES.find(x=>x.id===r.zone);return[i+1,r.createdAt,z?z.name:r.zone,r.no,r.itemName,r.reason,r.insp,r.improveAt||'',r.improveDesc||'','개선완료']});
   const ncWd=[['NG 레포트 - 개선완료 (보고용)'],['출력일시: '+date+' '+time,'총 '+ngClosed.length+'건'],[],ncHd,...ncRows];
-  const ws5=XLSX.utils.aoa_to_sheet(ncWd);ws5['!cols']=[{wch:5},{wch:16},{wch:10},{wch:12},{wch:12},{wch:30},{wch:8},{wch:16},{wch:8}];ws5['!merges']=[{s:{r:0,c:0},e:{r:0,c:8}}];
+  const ws5=XLSX.utils.aoa_to_sheet(ncWd);ws5['!cols']=[{wch:5},{wch:16},{wch:10},{wch:12},{wch:12},{wch:30},{wch:8},{wch:16},{wch:30},{wch:8}];ws5['!merges']=[{s:{r:0,c:0},e:{r:0,c:9}}];
   XLSX.utils.book_append_sheet(wb,ws5,'NG개선완료');
   XLSX.writeFile(wb,`설비점검_${date.replace(/-/g,'')}_${time.replace(':','')}.xlsx`);
 }
@@ -473,6 +473,7 @@ h2{font-size:15px;margin:20px 0 10px;padding:6px 10px;border-radius:6px}
       s+=`<div class="rpt-row"><div class="rpt-label">발생일시</div><div class="rpt-val">${r.createdAt}</div></div>`;
       s+=`<div class="rpt-row"><div class="rpt-label">점검자</div><div class="rpt-val">${r.insp}</div></div>`;
       if(r.improveAt)s+=`<div class="rpt-row"><div class="rpt-label">개선일시</div><div class="rpt-val">${r.improveAt}</div></div>`;
+      if(r.improveDesc)s+=`<div class="rpt-row"><div class="rpt-label">개선내용</div><div class="rpt-val" style="color:#2e7d32;font-weight:500">${r.improveDesc}</div></div>`;
       // 사진
       if(r.photo||r.improvePhoto){
         s+=`<div class="rpt-photos">`;
