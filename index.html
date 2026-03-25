@@ -45,10 +45,8 @@
     .lg-d{width:11px;height:11px;border-radius:3px;border:2px solid}
     .lu{background:#f5f5f5;border-color:#bbb}.lo{background:var(--ok-bg);border-color:var(--ok)}.ln{background:var(--ng-bg);border-color:var(--ng)}.lp{background:var(--part-bg);border-color:var(--part)}
     .mo{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:500;align-items:flex-end;justify-content:center}
-    .mo.show{display:flex;animation:fi .15s}
-    @keyframes fi{from{opacity:0}}
-    .ms{background:#fff;width:100%;max-width:480px;border-radius:16px 16px 0 0;max-height:85vh;overflow-y:auto;animation:su .25s}
-    @keyframes su{from{transform:translateY(100%)}}
+    .mo.show{display:flex;animation:fi .15s}@keyframes fi{from{opacity:0}}
+    .ms{background:#fff;width:100%;max-width:480px;border-radius:16px 16px 0 0;max-height:85vh;overflow-y:auto;animation:su .25s}@keyframes su{from{transform:translateY(100%)}}
     .mbar{width:36px;height:4px;background:#ccc;border-radius:2px;margin:10px auto 0}
     .mhd{padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #eee}
     .mbdg{width:44px;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;color:#fff;flex-shrink:0}
@@ -57,10 +55,8 @@
     .m-close{width:36px;height:36px;border:none;border-radius:50%;background:#f5f5f5;font-size:18px;cursor:pointer;color:#666;flex-shrink:0;display:flex;align-items:center;justify-content:center}
     .m-close:active{background:#e0e0e0}
     .mcl{padding:6px 16px 14px}
-    .mci{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f5f5f5}
-    .mci:last-child{border-bottom:none}
-    .mci-l{font-size:14px;font-weight:500}
-    .mcb{display:flex;gap:6px}
+    .mci{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f5f5f5}.mci:last-child{border-bottom:none}
+    .mci-l{font-size:14px;font-weight:500}.mcb{display:flex;gap:6px}
     .ckb{padding:7px 16px;border-radius:8px;border:2px solid;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:.15s;min-width:48px}
     .ckb.ok{border-color:#c8e6c9;background:#fff;color:#66bb6a}.ckb.ok.on{background:var(--ok);color:#fff;border-color:var(--ok)}
     .ckb.ng{border-color:#ffcdd2;background:#fff;color:#ef5350}.ckb.ng.on{background:var(--ng);color:#fff;border-color:var(--ng)}
@@ -71,18 +67,22 @@
     .nr{display:none;padding:3px 0 0}.nr.show{display:block}
     .nr input{width:100%;padding:6px 10px;border:1.5px solid #ffcdd2;border-radius:6px;font-size:13px;font-family:inherit;background:#fff5f5}
     .nr input:focus{outline:none;border-color:var(--ng)}
+    /* 수기 입력 */
+    .mci-text{padding:11px 0;border-bottom:1px solid #f5f5f5}
+    .mci-text:last-child{border-bottom:none}
+    .mci-text .mci-l{font-size:14px;font-weight:500;margin-bottom:6px}
+    .mci-text textarea{width:100%;padding:8px 10px;border:1.5px solid #ddd;border-radius:6px;font-size:13px;font-family:inherit;resize:vertical;min-height:48px;background:#fafbfc}
+    .mci-text textarea:focus{outline:none;border-color:var(--b);background:#fff}
     .hcard{background:var(--card);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:14px;margin-bottom:10px}
     .htit{font-size:14px;font-weight:700;margin-bottom:10px}
     .hempty{text-align:center;padding:20px;color:#aaa;font-size:13px}
-    .hitm{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid #f0f0f0}
-    .hitm:last-child{border-bottom:none}
+    .hitm{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid #f0f0f0}.hitm:last-child{border-bottom:none}
     .hbdg{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;flex-shrink:0}
-    .hdet{flex:1;min-width:0}
-    .hdet .ht2{display:flex;justify-content:space-between;align-items:center}
+    .hdet{flex:1;min-width:0}.hdet .ht2{display:flex;justify-content:space-between;align-items:center}
     .hdet .heq{font-weight:600;font-size:12px}.hdet .htm{font-size:10px;color:#999}
     .hdet .hr{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
     .hchip{font-size:9px;padding:1px 4px;border-radius:3px;font-weight:600}
-    .hchip.ok{background:var(--ok-bg);color:var(--ok)}.hchip.ng{background:var(--ng-bg);color:var(--ng)}
+    .hchip.ok{background:var(--ok-bg);color:var(--ok)}.hchip.ng{background:var(--ng-bg);color:var(--ng)}.hchip.txt{background:#e3f2fd;color:var(--b)}
     .hinsp{font-size:10px;color:#888;margin-top:2px}
     .h-acts{display:flex;gap:4px;margin-top:4px}
     .h-acts button{padding:3px 8px;border:none;border-radius:4px;font-size:10px;font-weight:600;font-family:inherit;cursor:pointer}
@@ -91,16 +91,17 @@
     .h-divider{padding:6px 0;font-size:11px;color:#999;border-bottom:1px dashed #ddd;margin:4px 0;font-weight:600}
     .scard{background:var(--card);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:14px;margin-bottom:10px}
     .stit{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-    .sitm{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f5f5f5}
-    .sitm:last-child{border-bottom:none}
+    .sitm{display:flex;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid #f5f5f5}.sitm:last-child{border-bottom:none}
     .sitm input{flex:1;padding:7px 10px;border:1.5px solid #ddd;border-radius:6px;font-size:13px;font-family:inherit}
     .sitm input:focus{outline:none;border-color:var(--b)}
+    .sitm select{padding:6px 4px;border:1.5px solid #ddd;border-radius:6px;font-size:11px;font-family:inherit;background:#fff;color:#555}
     .sitm .s-del{width:30px;height:30px;border:none;border-radius:6px;background:#ffebee;color:var(--ng);font-size:15px;font-weight:700;cursor:pointer;flex-shrink:0}
-    .s-add{width:100%;padding:9px;border:2px dashed #ccc;border-radius:8px;background:none;font-size:13px;font-weight:600;color:#999;cursor:pointer;margin-top:8px;font-family:inherit}
+    .s-add-row{display:flex;gap:6px;margin-top:8px}
+    .s-add-row button{flex:1;padding:9px;border:2px dashed #ccc;border-radius:8px;background:none;font-size:12px;font-weight:600;color:#999;cursor:pointer;font-family:inherit}
+    .s-add-row button:active{background:#f5f5f5}
     .s-btns{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
     .s-btns button{flex:1;min-width:70px;padding:9px;border:none;border-radius:8px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer}
-    .sb-save{background:var(--b);color:#fff}
-    .sb-load{background:#f5f5f5;color:#555;border:1.5px solid #ddd}
+    .sb-save{background:var(--b);color:#fff}.sb-load{background:#f5f5f5;color:#555;border:1.5px solid #ddd}
     .sb-export{background:#e8f5e9;color:var(--ok);border:1.5px solid #a5d6a7}
     .sb-import{background:#fff3e0;color:var(--c);border:1.5px solid #ffcc80}
     input[type=file]{display:none}
@@ -111,15 +112,14 @@
     .bb-reset{background:#fff;color:var(--ng);border:1.5px solid #ffcdd2;flex:0.6}
     .bb-reset:active{background:var(--ng-bg)}
     .reset-info{text-align:center;padding:4px 12px;font-size:11px;color:#999;background:var(--card);border-bottom:1px solid var(--bdr)}
+    .type-tag{font-size:9px;padding:1px 4px;border-radius:3px;margin-left:4px;font-weight:600}
+    .type-tag.check{background:#e8f5e9;color:var(--ok)}.type-tag.text{background:#e3f2fd;color:var(--b)}
   </style>
 </head>
 <body>
 <div class="hdr">
   <div class="hdr-top"><h1>🏭 설비 레이아웃 점검</h1><span id="cntTxt" style="font-size:12px;opacity:.8">0/34</span></div>
-  <div class="hdr-meta">
-    <input type="date" id="chkDate"><input type="time" id="chkTime">
-    <select id="insp"></select>
-  </div>
+  <div class="hdr-meta"><input type="date" id="chkDate"><input type="time" id="chkTime"><select id="insp"></select></div>
   <div class="prog-w"><div class="prog-f" id="progBar"></div></div>
 </div>
 <div id="resetInfo" class="reset-info" style="display:none"></div>
@@ -142,10 +142,11 @@
   <div class="legend"><div class="lg-i"><div class="lg-d lu"></div>미점검</div><div class="lg-i"><div class="lg-d lo"></div>완료</div><div class="lg-i"><div class="lg-d lp"></div>부분</div><div class="lg-i"><div class="lg-d ln"></div>NG</div></div></div>
 <div class="pnl" id="layH"><div class="hcard"><div class="htit">📋 점검 이력</div><div id="histList"><div class="hempty">아직 점검 이력이 없습니다</div></div></div></div>
 <div class="pnl" id="layS">
-  <div class="scard"><div class="stit">🔧 점검항목 관리</div><div id="ciEditor"></div><button class="s-add" onclick="addCI()">+ 항목 추가</button>
+  <div class="scard"><div class="stit">🔧 점검항목 관리</div><div id="ciEditor"></div>
+    <div class="s-add-row"><button onclick="addCI('check')">+ OK/NG 항목</button><button onclick="addCI('text')">+ 수기입력 항목</button></div>
     <div class="s-btns"><button class="sb-save" onclick="saveCI()">적용</button><button class="sb-load" onclick="resetCI()">기본값</button></div>
     <div class="s-btns" style="margin-top:6px"><button class="sb-export" onclick="exportCI()">TXT 저장</button><button class="sb-import" onclick="document.getElementById('ciFile').click()">TXT 불러오기</button><input type="file" id="ciFile" accept=".txt" onchange="importCI(event)"></div></div>
-  <div class="scard"><div class="stit">👤 점검자 관리</div><div id="inspEditor"></div><button class="s-add" onclick="addInsp()">+ 점검자 추가</button>
+  <div class="scard"><div class="stit">👤 점검자 관리</div><div id="inspEditor"></div><button class="s-add-row" style="border:none;padding:0;margin-top:8px"><button onclick="addInsp()" style="width:100%;padding:9px;border:2px dashed #ccc;border-radius:8px;background:none;font-size:12px;font-weight:600;color:#999;cursor:pointer;font-family:inherit">+ 점검자 추가</button></button>
     <div class="s-btns"><button class="sb-save" onclick="saveInsp()">적용</button><button class="sb-load" onclick="resetInsp()">기본값</button></div>
     <div class="s-btns" style="margin-top:6px"><button class="sb-export" onclick="exportInsp()">TXT 저장</button><button class="sb-import" onclick="document.getElementById('inspFile').click()">TXT 불러오기</button><input type="file" id="inspFile" accept=".txt" onchange="importInsp(event)"></div></div>
 </div>
@@ -173,9 +174,22 @@ const EQ={
   C:[{no:'39',mk:'국일',t:250,x:138,y:1327,w:87,h:68},{no:'02',mk:'심팩',t:200,x:139,y:1172,w:84,h:68},{no:'01',mk:'쌍용',t:200,x:140,y:999,w:84,h:67},{no:'29',mk:'국일',t:200,x:154,y:820,w:69,h:61},{no:'28',mk:'국일',t:250,x:377,y:545,w:74,h:68},{no:'34',mk:'심팩',t:250,x:146,y:435,w:76,h:54},{no:'38',mk:'국일',t:250,x:507,y:376,w:80,h:66},{no:'35',mk:'심팩',t:250,x:147,y:237,w:75,h:57},{no:'36',mk:'심팩',t:300,x:0,y:8,w:77,h:108},{no:'43',mk:'HIM',t:800,x:398,y:0,w:159,h:129}],
   B:[{no:'45',mk:'심팩',t:300,x:205,y:1664,w:74,h:57},{no:'31',mk:'심팩',t:150,x:399,y:1656,w:77,h:56},{no:'41',mk:'국일',t:200,x:566,y:1653,w:79,h:59},{no:'47',mk:'심팩',t:300,x:200,y:1377,w:74,h:58},{no:'04',mk:'심팩',t:150,x:360,y:1228,w:79,h:53},{no:'37',mk:'국일',t:200,x:503,y:1227,w:75,h:52},{no:'03',mk:'심팩',t:150,x:543,y:1004,w:83,h:65},{no:'40',mk:'심팩',t:110,x:417,y:1004,w:72,h:65},{no:'46',mk:'심팩',t:300,x:232,y:1012,w:84,h:56},{no:'48',mk:'심팩',t:300,x:235,y:740,w:74,h:58},{no:'05',mk:'심팩',t:110,x:461,y:561,w:75,h:60},{no:'06',mk:'심팩',t:110,x:349,y:560,w:80,h:59},{no:'30',mk:'국일',t:160,x:581,y:560,w:73,h:59},{no:'32',mk:'심팩',t:200,x:397,y:346,w:77,h:49},{no:'42',mk:'AIDA',t:200,x:540,y:352,w:78,h:49},{no:'49',mk:'심팩',t:300,x:237,y:254,w:68,h:104},{no:'17',mk:'심팩',t:80,x:0,y:158,w:55,h:39},{no:'11',mk:'심팩',t:80,x:476,y:135,w:55,h:38},{no:'10',mk:'심팩',t:80,x:579,y:135,w:57,h:41},{no:'13',mk:'심팩',t:80,x:476,y:77,w:54,h:38},{no:'09',mk:'심팩',t:80,x:579,y:79,w:56,h:38},{no:'07',mk:'심팩',t:80,x:475,y:18,w:54,h:38},{no:'08',mk:'심팩',t:80,x:579,y:20,w:55,h:39},{no:'12',mk:'심팩',t:80,x:354,y:0,w:50,h:45}]
 };
-const DEFAULT_CI=[{id:'appearance',lb:'제품외관'},{id:'separation',lb:'구분관리'},{id:'boxState',lb:'박스상태'},{id:'selfCheck',lb:'자주검사'},{id:'safety',lb:'안전수칙'},{id:'fiveS',lb:'5S'}];
+
+// type: 'check'(OK/NG) 또는 'text'(수기입력)
+const DEFAULT_CI=[
+  {id:'appearance',lb:'제품외관',tp:'check'},
+  {id:'separation',lb:'구분관리',tp:'check'},
+  {id:'boxState',lb:'박스상태',tp:'check'},
+  {id:'selfCheck',lb:'자주검사',tp:'check'},
+  {id:'safety',lb:'안전수칙',tp:'check'},
+  {id:'fiveS',lb:'5S',tp:'check'},
+  {id:'memo',lb:'메모(수기)',tp:'text'}
+];
 const DEFAULT_INSP=['강병주','오윤정','김상기','허미정','오현민','문수진','김미선','송경옥','권혜영','김갑선','진정화','이유선','강란희','차찬이','서성자','전귀옥','양혜정'];
-let CI=JSON.parse(localStorage.getItem('CI')||'null')||JSON.parse(JSON.stringify(DEFAULT_CI));
+
+// tp 없는 기존 데이터 마이그레이션
+function migrateCI(arr){return arr.map(i=>({...i,tp:i.tp||'check'}))}
+let CI=migrateCI(JSON.parse(localStorage.getItem('CI')||'null')||JSON.parse(JSON.stringify(DEFAULT_CI)));
 let INSP=JSON.parse(localStorage.getItem('INSP')||'null')||[...DEFAULT_INSP];
 let res=JSON.parse(localStorage.getItem('RES')||'{}');
 let hist=JSON.parse(localStorage.getItem('HIST')||'[]');
@@ -184,24 +198,16 @@ let curKey=null,mChk={},editIdx=-1;
 const TOTAL=EQ.C.length+EQ.B.length;
 
 function persist(){localStorage.setItem('RES',JSON.stringify(res));localStorage.setItem('HIST',JSON.stringify(hist))}
+function checkItems(){return CI.filter(i=>i.tp==='check')}
+function textItems(){return CI.filter(i=>i.tp==='text')}
 
-/*
-  isActive: 해제 시점 이후에 저장된 기록만 유효 (설비 블록 마킹 표시)
-  해제 이전 기록 → 설비 블록은 미점검(회색)
-  해제 이후 기록 → 설비 블록에 마킹 유지
-  이력은 전부 보존 (해제 이전도 이력탭에서 정상 표시)
-*/
-function isActive(r){
-  if(!r||!r.ts)return false;
-  if(!clearTime)return true;
-  return r.ts>clearTime;
-}
+function isActive(r){if(!r||!r.ts)return false;if(!clearTime)return true;return r.ts>clearTime}
 function getStatus(r){
   if(!isActive(r))return'unc';
-  const filled=CI.filter(i=>r[i.id]==='OK'||r[i.id]==='NG');
+  const chks=checkItems(),filled=chks.filter(i=>r[i.id]==='OK'||r[i.id]==='NG');
   if(!filled.length)return'unc';
-  if(CI.some(i=>r[i.id]==='NG'))return'hng';
-  if(filled.length<CI.length)return'prt';
+  if(chks.some(i=>r[i.id]==='NG'))return'hng';
+  if(filled.length<chks.length)return'prt';
   return'aok';
 }
 
@@ -228,13 +234,11 @@ function renderMap(b,cid){
   list.forEach(e=>{
     const k=b+'-'+e.no,r=res[k],st=getStatus(r),d=document.createElement('div');
     d.className='eq '+st;d.id='eq-'+k;
-    const l=(e.x+pad)*sc,t=(e.y+pad)*sc,w=e.w*sc,h=e.h*sc;
-    d.style.cssText=`left:${l}px;top:${t}px;width:${w}px;height:${h}px`;
-    const fs=Math.max(7,Math.min(12,w/5));d.style.fontSize=fs+'px';
+    d.style.cssText=`left:${(e.x+pad)*sc}px;top:${(e.y+pad)*sc}px;width:${e.w*sc}px;height:${e.h*sc}px`;
+    const fs=Math.max(7,Math.min(12,e.w*sc/5));d.style.fontSize=fs+'px';
     d.onclick=()=>{editIdx=-1;openMo(b,e)};
-    let dtText='',dtShow='none';
-    if(isActive(r)&&r.at){dtText=r.at.split(' ')[1];dtShow='block'}
-    d.innerHTML=`<span class="en" style="font-size:${Math.min(14,fs+2)}px">${e.no}</span><span class="ei">${e.t}t</span><span class="ed" id="dt-${k}" style="display:${dtShow};font-size:${Math.max(6,fs-2)}px">${dtText}</span>`;
+    let dtT='',dtS='none';if(isActive(r)&&r.at){dtT=r.at.split(' ')[1];dtS='block'}
+    d.innerHTML=`<span class="en" style="font-size:${Math.min(14,fs+2)}px">${e.no}</span><span class="ei">${e.t}t</span><span class="ed" id="dt-${k}" style="display:${dtS};font-size:${Math.max(6,fs-2)}px">${dtT}</span>`;
     c.appendChild(d);
   });
 }
@@ -247,32 +251,61 @@ function swTab(t){
   if(t==='H')renderHist();
 }
 
+/* ===== 점검 모달 ===== */
 function openMo(b,e){
   const k=b+'-'+e.no;curKey=k;
   document.getElementById('moBdg').style.background=b==='C'?'var(--c)':'var(--b)';
   document.getElementById('moNo').textContent=e.no;document.getElementById('moTon').textContent=e.t+'t';
   document.getElementById('moTit').textContent=e.mk+' '+e.t+'t';document.getElementById('moSub').textContent=b+'동 · #'+e.no;
-  if(isActive(res[k])){mChk={...res[k]}}else{mChk={};CI.forEach(i=>{mChk[i.id]=null})}
+  if(isActive(res[k])){mChk={...res[k]}}else{mChk={};CI.forEach(i=>{mChk[i.id]=i.tp==='text'?'':null})}
   renderCL();document.getElementById('chkMo').classList.add('show');
 }
+
 function renderCL(){
   const c=document.getElementById('chkList');c.innerHTML='';
-  CI.forEach(i=>{const v=mChk[i.id],d=document.createElement('div');
-    d.innerHTML=`<div class="mci"><span class="mci-l">${i.lb}</span><div class="mcb">
-      <button class="ckb ok ${v==='OK'?'on':''}" onclick="setCk('${i.id}','OK',this)">OK</button>
-      <button class="ckb ng ${v==='NG'?'on':''}" onclick="setCk('${i.id}','NG',this)">NG</button>
-    </div></div><div class="nr ${v==='NG'?'show':''}" id="nr-${i.id}">
-      <input id="ni-${i.id}" placeholder="NG 사유" value="${mChk[i.id+'_r']||''}">
-    </div>`;c.appendChild(d)});
+  CI.forEach(i=>{
+    const d=document.createElement('div');
+    if(i.tp==='text'){
+      // 수기입력 항목
+      d.className='mci-text';
+      d.innerHTML=`<div class="mci-l">${i.lb}</div><textarea id="ti-${i.id}" placeholder="${i.lb} 내용을 입력하세요">${mChk[i.id]||''}</textarea>`;
+    } else {
+      // OK/NG 체크 항목
+      const v=mChk[i.id];
+      d.innerHTML=`<div class="mci"><span class="mci-l">${i.lb}</span><div class="mcb">
+        <button class="ckb ok ${v==='OK'?'on':''}" onclick="setCk('${i.id}','OK',this)">OK</button>
+        <button class="ckb ng ${v==='NG'?'on':''}" onclick="setCk('${i.id}','NG',this)">NG</button>
+      </div></div><div class="nr ${v==='NG'?'show':''}" id="nr-${i.id}">
+        <input id="ni-${i.id}" placeholder="NG 사유" value="${mChk[i.id+'_r']||''}">
+      </div>`;
+    }
+    c.appendChild(d);
+  });
 }
+
 function setCk(id,v,btn){
   mChk[id]=(mChk[id]===v)?null:v;
   const nr=document.getElementById('nr-'+id);mChk[id]==='NG'?nr.classList.add('show'):nr.classList.remove('show');
   btn.parentElement.querySelectorAll('.ckb').forEach(b=>b.classList.remove('on'));if(mChk[id])btn.classList.add('on');
 }
-function moAllOk(){CI.forEach(i=>{mChk[i.id]='OK'});renderCL()}
+
+function moAllOk(){
+  checkItems().forEach(i=>{mChk[i.id]='OK'});
+  renderCL();
+}
+
 function moSave(){
-  CI.forEach(i=>{if(mChk[i.id]==='NG'){const inp=document.getElementById('ni-'+i.id);if(inp)mChk[i.id+'_r']=inp.value}else delete mChk[i.id+'_r']});
+  // check 항목: NG 사유 수집
+  checkItems().forEach(i=>{
+    if(mChk[i.id]==='NG'){const inp=document.getElementById('ni-'+i.id);if(inp)mChk[i.id+'_r']=inp.value}
+    else delete mChk[i.id+'_r'];
+  });
+  // text 항목: 값 수집
+  textItems().forEach(i=>{
+    const ta=document.getElementById('ti-'+i.id);
+    if(ta)mChk[i.id]=ta.value;
+  });
+
   const now=new Date(),ts=now.toISOString();
   const timeStr=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
   const ds=document.getElementById('chkDate').value,ins=document.getElementById('insp').value||'-',atStr=ds+' '+timeStr;
@@ -312,18 +345,15 @@ function updSummary(){
 /* ===== 전체 해제 ===== */
 function resetAll(){
   if(!confirm('전체 해제하시겠습니까?\n\n현재까지의 설비 마킹이 초기화됩니다.\n해제 이후 새로 점검하면 다시 마킹됩니다.\n이력 기록은 모두 보존됩니다.'))return;
-  clearTime=new Date().toISOString();
-  localStorage.setItem('CLR_TIME',clearTime);
+  clearTime=new Date().toISOString();localStorage.setItem('CLR_TIME',clearTime);
   ['C','B'].forEach(b=>EQ[b].forEach(e=>updEq(b+'-'+e.no)));
   updSummary();showClearInfo();
 }
 function showClearInfo(){
   const el=document.getElementById('resetInfo');
-  if(clearTime){
-    const d=new Date(clearTime);
-    const ds=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-    const ts=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0');
-    el.textContent='마지막 해제: '+ds+' '+ts;el.style.display='block';
+  if(clearTime){const d=new Date(clearTime);
+    el.textContent='마지막 해제: '+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+    el.style.display='block';
   }else{el.style.display='none'}
 }
 
@@ -331,61 +361,75 @@ function showClearInfo(){
 function renderHist(){
   const c=document.getElementById('histList');
   if(!hist.length){c.innerHTML='<div class="hempty">아직 점검 이력이 없습니다</div>';return}
-  c.innerHTML='';
-  let prevCleared=null;
+  c.innerHTML='';let prevClr=null;
   hist.forEach((h,idx)=>{
-    const clr=h.b==='C'?'var(--c)':'var(--b)';
-    const isCleared=clearTime&&h.ts&&h.ts<=clearTime;
-    // 해제 경계 구분선 (최초 해제된 항목 직전)
-    if(isCleared&&prevCleared===false){
-      const dv=document.createElement('div');dv.className='h-divider';
-      const cd=new Date(clearTime);
-      dv.textContent='── 해제 ('+cd.getFullYear()+'-'+String(cd.getMonth()+1).padStart(2,'0')+'-'+String(cd.getDate()).padStart(2,'0')+' '+String(cd.getHours()).padStart(2,'0')+':'+String(cd.getMinutes()).padStart(2,'0')+') ──';
-      c.appendChild(dv);
-    }
-    prevCleared=isCleared;
-
-    const chips=CI.map(i=>{const v=h.chk[i.id];if(!v)return '';let lb=i.lb.length>3?i.lb.substring(0,3):i.lb;
-      if(v==='NG'&&h.chk[i.id+'_r'])lb+=':'+h.chk[i.id+'_r'];return `<span class="hchip ${v==='OK'?'ok':'ng'}">${lb} ${v}</span>`}).join('');
+    const clr=h.b==='C'?'var(--c)':'var(--b)',isClr=clearTime&&h.ts&&h.ts<=clearTime;
+    if(isClr&&prevClr===false){const dv=document.createElement('div');dv.className='h-divider';
+      const cd=new Date(clearTime);dv.textContent='── 해제 ('+cd.getFullYear()+'-'+String(cd.getMonth()+1).padStart(2,'0')+'-'+String(cd.getDate()).padStart(2,'0')+' '+String(cd.getHours()).padStart(2,'0')+':'+String(cd.getMinutes()).padStart(2,'0')+') ──';
+      c.appendChild(dv)}
+    prevClr=isClr;
+    // 칩 생성
+    const chips=CI.map(i=>{
+      if(i.tp==='text'){
+        const val=h.chk[i.id];
+        if(!val)return '';
+        const short=val.length>8?val.substring(0,8)+'…':val;
+        return `<span class="hchip txt">📝${short}</span>`;
+      }
+      const v=h.chk[i.id];if(!v)return '';
+      let lb=i.lb.length>3?i.lb.substring(0,3):i.lb;
+      if(v==='NG'&&h.chk[i.id+'_r'])lb+=':'+h.chk[i.id+'_r'];
+      return `<span class="hchip ${v==='OK'?'ok':'ng'}">${lb} ${v}</span>`;
+    }).join('');
     const d=document.createElement('div');d.className='hitm';
     d.innerHTML=`<div class="hbdg" style="background:${clr}">${h.no}</div><div class="hdet">
-      <div class="ht2"><span class="heq">${h.b}동 ${h.mk} ${h.t}t${isCleared?'<span class="h-clr-tag">해제전</span>':''}</span><span class="htm">${h.at}</span></div>
+      <div class="ht2"><span class="heq">${h.b}동 ${h.mk} ${h.t}t${isClr?'<span class="h-clr-tag">해제전</span>':''}</span><span class="htm">${h.at}</span></div>
       <div class="hr">${chips}</div><div class="hinsp">점검자: ${h.insp}</div>
-      <div class="h-acts">
-        <button class="ha-edit" onclick="editHist(${idx})">✏ 수정</button>
-        <button class="ha-del" onclick="delHist(${idx})">🗑 삭제</button>
-      </div></div>`;
+      <div class="h-acts"><button class="ha-edit" onclick="editHist(${idx})">✏ 수정</button><button class="ha-del" onclick="delHist(${idx})">🗑 삭제</button></div></div>`;
     c.appendChild(d);
   });
 }
 function editHist(idx){
-  const h=hist[idx];editIdx=idx;
-  // 수정하면 새 타임스탬프로 저장되므로 해제 이후 기록이 됨
-  res[h.key]={...h.chk,at:h.at,insp:h.insp,ts:h.ts};
+  const h=hist[idx];editIdx=idx;res[h.key]={...h.chk,at:h.at,insp:h.insp,ts:h.ts};
   const[b,no]=h.key.split('-'),eq=EQ[b].find(e=>e.no===no);openMo(b,eq);
 }
 function delHist(idx){
   if(!confirm('이 점검 기록을 삭제하시겠습니까?'))return;
   const h=hist[idx];hist.splice(idx,1);
-  // 같은 설비의 유효한(해제 이후) 최신 이력 찾기
   const latest=hist.find(x=>x.key===h.key&&(!clearTime||x.ts>clearTime));
-  if(latest){res[h.key]={...latest.chk,at:latest.at,insp:latest.insp,ts:latest.ts}}
-  else{
-    // 유효한 이력 없으면 res에서 제거 (해제 이전 데이터만 남은 경우)
-    if(!isActive(res[h.key]))delete res[h.key];
-    else delete res[h.key];
-  }
+  if(latest){res[h.key]={...latest.chk,at:latest.at,insp:latest.insp,ts:latest.ts}}else{delete res[h.key]}
   persist();updEq(h.key);updSummary();renderHist();
 }
 
-/* ===== 에디터 ===== */
-function renderCIEditor(){const c=document.getElementById('ciEditor');c.innerHTML='';CI.forEach((item,i)=>{const d=document.createElement('div');d.className='sitm';d.innerHTML=`<input value="${item.lb}" oninput="CI[${i}].lb=this.value"><button class="s-del" onclick="delCI(${i})">✕</button>`;c.appendChild(d)})}
-function addCI(){CI.push({id:'c_'+Date.now(),lb:'새 항목'});renderCIEditor()}
+/* ===== 점검항목 에디터 ===== */
+function renderCIEditor(){
+  const c=document.getElementById('ciEditor');c.innerHTML='';
+  CI.forEach((item,i)=>{const d=document.createElement('div');d.className='sitm';
+    const tpLabel=item.tp==='text'?'수기':'OK/NG';
+    d.innerHTML=`<input value="${item.lb}" oninput="CI[${i}].lb=this.value">
+      <select onchange="CI[${i}].tp=this.value"><option value="check" ${item.tp==='check'?'selected':''}>OK/NG</option><option value="text" ${item.tp==='text'?'selected':''}>수기</option></select>
+      <button class="s-del" onclick="delCI(${i})">✕</button>`;
+    c.appendChild(d)});
+}
+function addCI(tp){CI.push({id:'c_'+Date.now(),lb:tp==='text'?'수기항목':'새 항목',tp});renderCIEditor()}
 function delCI(i){if(CI.length<=1){alert('최소 1개 항목 필요');return}CI.splice(i,1);renderCIEditor()}
-function saveCI(){CI.forEach((it,i)=>{if(!it.id)it.id='i_'+i});localStorage.setItem('CI',JSON.stringify(CI));alert('점검항목 적용 완료')}
+function saveCI(){CI.forEach((it,i)=>{if(!it.id)it.id='i_'+i;if(!it.tp)it.tp='check'});localStorage.setItem('CI',JSON.stringify(CI));alert('점검항목 적용 완료')}
 function resetCI(){CI=JSON.parse(JSON.stringify(DEFAULT_CI));localStorage.setItem('CI',JSON.stringify(CI));renderCIEditor();alert('기본값 복원')}
-function exportCI(){dlTxt(CI.map(i=>i.lb).join('\n'),'점검항목.txt')}
-function importCI(e){loadTxt(e,lines=>{CI=lines.map((lb,i)=>({id:'imp_'+i,lb}));localStorage.setItem('CI',JSON.stringify(CI));renderCIEditor();alert(lines.length+'개 항목 불러옴')})}
+function exportCI(){
+  // 형식: 항목명|타입 (check 또는 text)
+  const lines=CI.map(i=>i.lb+'|'+i.tp);
+  dlTxt(lines.join('\n'),'점검항목.txt');
+}
+function importCI(e){loadTxt(e,lines=>{
+  CI=lines.map((line,i)=>{
+    const parts=line.split('|');
+    const lb=parts[0].trim();
+    const tp=(parts[1]&&parts[1].trim()==='text')?'text':'check';
+    return {id:'imp_'+i,lb,tp};
+  });
+  localStorage.setItem('CI',JSON.stringify(CI));renderCIEditor();alert(lines.length+'개 항목 불러옴');
+})}
+
 function renderInspEditor(){const c=document.getElementById('inspEditor');c.innerHTML='';INSP.forEach((name,i)=>{const d=document.createElement('div');d.className='sitm';d.innerHTML=`<input value="${name}" oninput="INSP[${i}]=this.value"><button class="s-del" onclick="delInsp(${i})">✕</button>`;c.appendChild(d)})}
 function addInsp(){INSP.push('');renderInspEditor();setTimeout(()=>{const inp=document.querySelectorAll('#inspEditor input');if(inp.length)inp[inp.length-1].focus()},50)}
 function delInsp(i){if(INSP.length<=1){alert('최소 1명 필요');return}INSP.splice(i,1);renderInspEditor()}
@@ -404,13 +448,17 @@ function downloadXlsx(){
   const rows=[];
   ['C','B'].forEach(b=>{EQ[b].forEach(e=>{
     const k=b+'-'+e.no,r=res[k],act=isActive(r),row=[b+'동',e.no,e.mk,e.t+'t'],ngs=[];
-    CI.forEach(i=>{if(act){row.push(r[i.id]||'');if(r[i.id]==='NG'&&r[i.id+'_r'])ngs.push(i.lb+':'+r[i.id+'_r'])}else row.push('')});
+    CI.forEach(i=>{
+      if(!act){row.push('');return}
+      if(i.tp==='text'){row.push(r[i.id]||'')}
+      else{row.push(r[i.id]||'');if(r[i.id]==='NG'&&r[i.id+'_r'])ngs.push(i.lb+':'+r[i.id+'_r'])}
+    });
     const stMap={aok:'완료',hng:'NG',prt:'부분체크',unc:'미점검'};row.push(stMap[getStatus(r)]||'미점검');
     row.push(ngs.join(', '));row.push(act?r.at.split(' ')[1]:'');row.push(act?r.insp:'');rows.push(row)})});
   const wb=XLSX.utils.book_new();
   const wd=[['설비 레이아웃 점검 체크시트'],['점검일자: '+date,'점검시간: '+time,'점검자: '+insp],[],hd,...rows];
   const ws=XLSX.utils.aoa_to_sheet(wd);
-  ws['!cols']=[{wch:6},{wch:8},{wch:8},{wch:6},...CI.map(()=>({wch:8})),{wch:8},{wch:24},{wch:8},{wch:8}];
+  ws['!cols']=[{wch:6},{wch:8},{wch:8},{wch:6},...CI.map(i=>({wch:i.tp==='text'?20:8})),{wch:8},{wch:24},{wch:8},{wch:8}];
   ws['!merges']=[{s:{r:0,c:0},e:{r:0,c:hd.length-1}}];
   XLSX.utils.book_append_sheet(wb,ws,'점검결과');
   const sm=[['점검 요약'],[],['항목','내용'],['점검일자',date],['점검시간',time],['점검자',insp],[],['건물','전체','완료','부분','NG','미점검']];
@@ -422,7 +470,7 @@ function downloadXlsx(){
   sm.push(['합계',TOTAL,tDn,tPt,tNg,TOTAL-tDn-tPt-tNg]);
   sm.push([],['■ NG 상세 내역'],['건물','설비','항목','NG사유','점검자']);
   ['C','B'].forEach(b=>EQ[b].forEach(e=>{const k=b+'-'+e.no,r=res[k];if(!isActive(r))return;
-    CI.forEach(i=>{if(r[i.id]==='NG')sm.push([b+'동',e.no+' '+e.mk+' '+e.t+'t',i.lb,r[i.id+'_r']||'',r.insp])})}));
+    checkItems().forEach(i=>{if(r[i.id]==='NG')sm.push([b+'동',e.no+' '+e.mk+' '+e.t+'t',i.lb,r[i.id+'_r']||'',r.insp])})}));
   const ws2=XLSX.utils.aoa_to_sheet(sm);ws2['!cols']=[{wch:8},{wch:18},{wch:10},{wch:24},{wch:8}];
   ws2['!merges']=[{s:{r:0,c:0},e:{r:0,c:5}}];
   XLSX.utils.book_append_sheet(wb,ws2,'요약');
