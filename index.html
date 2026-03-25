@@ -444,10 +444,14 @@ function loadTxt(e,cb){const f=e.target.files[0];if(!f)return;const r=new FileRe
 function downloadXlsx(){
   const date=document.getElementById('chkDate').value,time=document.getElementById('chkTime').value,insp=document.getElementById('insp').value||'-';
   if(!insp||insp==='-'){alert('점검자를 선택해주세요.');return}
-  const hd=['건물','설비번호','메이커','톤수'];CI.forEach(i=>hd.push(i.lb));hd.push('상태','NG사유','점검시간','점검자');
+  const wb=XLSX.utils.book_new();
+
+  // ── 시트1: 현재 점검결과 (점검일자 컬럼 포함) ──
+  const hd=['점검일자','건물','설비번호','메이커','톤수'];CI.forEach(i=>hd.push(i.lb));hd.push('상태','NG사유','점검시간','점검자');
   const rows=[];
   ['C','B'].forEach(b=>{EQ[b].forEach(e=>{
-    const k=b+'-'+e.no,r=res[k],act=isActive(r),row=[b+'동',e.no,e.mk,e.t+'t'],ngs=[];
+    const k=b+'-'+e.no,r=res[k],act=isActive(r),ngs=[];
+    const row=[act&&r.at?r.at.split(' ')[0]:'' ,b+'동',e.no,e.mk,e.t+'t'];
     CI.forEach(i=>{
       if(!act){row.push('');return}
       if(i.tp==='text'){row.push(r[i.id]||'')}
@@ -455,13 +459,14 @@ function downloadXlsx(){
     });
     const stMap={aok:'완료',hng:'NG',prt:'부분체크',unc:'미점검'};row.push(stMap[getStatus(r)]||'미점검');
     row.push(ngs.join(', '));row.push(act?r.at.split(' ')[1]:'');row.push(act?r.insp:'');rows.push(row)})});
-  const wb=XLSX.utils.book_new();
-  const wd=[['설비 레이아웃 점검 체크시트'],['점검일자: '+date,'점검시간: '+time,'점검자: '+insp],[],hd,...rows];
+  const wd=[['설비 레이아웃 점검 체크시트'],['다운로드: '+date+' '+time,'점검자: '+insp],[],hd,...rows];
   const ws=XLSX.utils.aoa_to_sheet(wd);
-  ws['!cols']=[{wch:6},{wch:8},{wch:8},{wch:6},...CI.map(i=>({wch:i.tp==='text'?20:8})),{wch:8},{wch:24},{wch:8},{wch:8}];
+  ws['!cols']=[{wch:11},{wch:6},{wch:8},{wch:8},{wch:6},...CI.map(i=>({wch:i.tp==='text'?20:8})),{wch:8},{wch:24},{wch:8},{wch:8}];
   ws['!merges']=[{s:{r:0,c:0},e:{r:0,c:hd.length-1}}];
   XLSX.utils.book_append_sheet(wb,ws,'점검결과');
-  const sm=[['점검 요약'],[],['항목','내용'],['점검일자',date],['점검시간',time],['점검자',insp],[],['건물','전체','완료','부분','NG','미점검']];
+
+  // ── 시트2: 요약 ──
+  const sm=[['점검 요약'],[],['항목','내용'],['다운로드일시',date+' '+time],['점검자',insp],[],['건물','전체','완료','부분','NG','미점검']];
   ['C','B'].forEach(b=>{const list=EQ[b];let dn=0,pt=0,ng=0;
     list.forEach(e=>{const s=getStatus(res[b+'-'+e.no]);if(s==='aok')dn++;else if(s==='prt')pt++;else if(s==='hng')ng++});
     sm.push([b+'동',list.length,dn,pt,ng,list.length-dn-pt-ng])});
@@ -474,6 +479,28 @@ function downloadXlsx(){
   const ws2=XLSX.utils.aoa_to_sheet(sm);ws2['!cols']=[{wch:8},{wch:18},{wch:10},{wch:24},{wch:8}];
   ws2['!merges']=[{s:{r:0,c:0},e:{r:0,c:5}}];
   XLSX.utils.book_append_sheet(wb,ws2,'요약');
+
+  // ── 시트3: 누적이력 (전체 이력을 일자별 시간순으로) ──
+  const hHd=['점검일자','점검시간','건물','설비번호','메이커','톤수'];CI.forEach(i=>hHd.push(i.lb));hHd.push('상태','NG사유','점검자');
+  const sorted=[...hist].sort((a,b)=>a.ts>b.ts?1:a.ts<b.ts?-1:0);
+  const hRows=sorted.map(h=>{
+    const atParts=(h.at||'').split(' ');
+    const hDate=atParts[0]||'';const hTime=atParts[1]||'';
+    const row=[hDate,hTime,h.b+'동',h.no,h.mk,h.t+'t'];
+    const ngs=[];
+    CI.forEach(i=>{
+      if(i.tp==='text'){row.push(h.chk[i.id]||'')}
+      else{row.push(h.chk[i.id]||'');if(h.chk[i.id]==='NG'&&h.chk[i.id+'_r'])ngs.push(i.lb+':'+h.chk[i.id+'_r'])}
+    });
+    const stMap={aok:'완료',hng:'NG',prt:'부분체크',unc:''};row.push(stMap[h.st]||'');
+    row.push(ngs.join(', '));row.push(h.insp||'');return row;
+  });
+  const hwd=[['누적 점검 이력 ('+hist.length+'건)'],[],hHd,...hRows];
+  const ws3=XLSX.utils.aoa_to_sheet(hwd);
+  ws3['!cols']=[{wch:11},{wch:8},{wch:6},{wch:8},{wch:8},{wch:6},...CI.map(i=>({wch:i.tp==='text'?20:8})),{wch:8},{wch:24},{wch:8}];
+  ws3['!merges']=[{s:{r:0,c:0},e:{r:0,c:hHd.length-1}}];
+  XLSX.utils.book_append_sheet(wb,ws3,'누적이력');
+
   XLSX.writeFile(wb,`설비점검_${date.replace(/-/g,'')}_${time.replace(':','')}.xlsx`);
 }
 init();
